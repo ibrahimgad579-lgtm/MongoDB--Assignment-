@@ -1,13 +1,9 @@
-import { MongoClient } from 'mongodb';
+import mongoose from "mongoose";
 
 
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
- export const db = client.db("c48");
 
-
-export const connectionDb = async()=>{
-    await client.connect()
+const connectionDb = async()=>{
+    await mongoose.connect('mongodb://127.0.0.1:27017/c48-eln7s')
     .then(()=>{
         console.log('Connected successfully to server');
     })
@@ -15,3 +11,4 @@ export const connectionDb = async()=>{
         console.log(`error connecting to Mongodb:`,err)
     })
 }
+export default connectionDb
